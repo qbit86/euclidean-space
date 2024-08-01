@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Primitive types for Euclidean vector and affine spaces.
+Commonly used types:
+- Point2&lt;TScalar&gt;
+- Point3&lt;TScalar&gt;
+- Vector2&lt;TScalar&gt;
+- Vector3&lt;TScalar&gt;</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>geometry;point;vector</PackageTags>
+    <Title>Euclidean vectors and points</Title>
+    <VersionSuffix>preview</VersionSuffix>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyVersion>0.1</AssemblyVersion>
+    <FileVersion>$(VersionPrefix)</FileVersion>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(DebugType)' == 'portable'">
+    <EmbedAllSources>true</EmbedAllSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
