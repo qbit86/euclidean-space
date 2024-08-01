@@ -10,6 +10,7 @@
     <NeutralLanguage>en-US</NeutralLanguage>
     <Nullable>enable</Nullable>
     <RepoRoot>$(MSBuildThisFileDirectory)</RepoRoot>
+    <RootNamespace>EuclideanSpace</RootNamespace>
     <UseArtifactsOutput>true</UseArtifactsOutput>
   </PropertyGroup>
 </Project>
