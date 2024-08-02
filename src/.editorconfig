@@ -1,6 +1,7 @@
 [*.cs]
 csharp_style_namespace_declarations = block_scoped:warning
 csharp_using_directive_placement = inside_namespace:suggestion
+resharper_convert_to_auto_property_when_possible_highlighting = none # ConvertToAutoPropertyWhenPossible
 
 [*.csproj]
 ij_formatter_enabled = false
