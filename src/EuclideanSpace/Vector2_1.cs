@@ -14,12 +14,16 @@ namespace EuclideanSpace
         IEqualityOperators<Vector2<TScalar>, Vector2<TScalar>, bool>,
         IAdditionOperators<Vector2<TScalar>, Vector2<TScalar>, Vector2<TScalar>>,
         IMultiplyOperators<Vector2<TScalar>, Vector2<TScalar>, Vector2<TScalar>>,
+        IMultiplyOperators<Vector2<TScalar>, TScalar, Vector2<TScalar>>,
         ISubtractionOperators<Vector2<TScalar>, Vector2<TScalar>, Vector2<TScalar>>,
-        IUnaryNegationOperators<Vector2<TScalar>, Vector2<TScalar>>
+        IUnaryNegationOperators<Vector2<TScalar>, Vector2<TScalar>>,
+        IDivisionOperators<Vector2<TScalar>, Vector2<TScalar>, Vector2<TScalar>>,
+        IDivisionOperators<Vector2<TScalar>, TScalar, Vector2<TScalar>>
         where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
         IMultiplyOperators<TScalar, TScalar, TScalar>,
         ISubtractionOperators<TScalar, TScalar, TScalar>,
-        IUnaryNegationOperators<TScalar, TScalar>
+        IUnaryNegationOperators<TScalar, TScalar>,
+        IDivisionOperators<TScalar, TScalar, TScalar>
     {
         internal readonly TScalar _x;
         private readonly TScalar _y;
@@ -67,5 +71,13 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> operator -(Vector2<TScalar> value) =>
             new(-value.X, -value.Y);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2<TScalar> operator /(Vector2<TScalar> left, Vector2<TScalar> right) =>
+            new(left.X / right.X, left.Y / right.Y);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2<TScalar> operator /(Vector2<TScalar> left, TScalar right) =>
+            left / new Vector2<TScalar>(right);
     }
 }

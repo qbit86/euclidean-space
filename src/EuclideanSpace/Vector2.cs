@@ -13,7 +13,8 @@ namespace EuclideanSpace
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
-            IUnaryNegationOperators<TScalar, TScalar>
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
             => left + right;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -21,7 +22,8 @@ namespace EuclideanSpace
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
-            IUnaryNegationOperators<TScalar, TScalar>
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
             => left * right;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -29,7 +31,8 @@ namespace EuclideanSpace
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
-            IUnaryNegationOperators<TScalar, TScalar>
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
             => left * right;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -37,15 +40,53 @@ namespace EuclideanSpace
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
-            IUnaryNegationOperators<TScalar, TScalar>
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
             => left * right;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2<TScalar> Subtract<TScalar>(Vector2<TScalar> left, Vector2<TScalar> right)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => left - right;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2<TScalar> Negate<TScalar>(Vector2<TScalar> value)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => -value;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2<TScalar> Divide<TScalar>(Vector2<TScalar> left, Vector2<TScalar> right)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => left / right;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2<TScalar> Divide<TScalar>(Vector2<TScalar> left, TScalar right)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => left / right;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TScalar Dot<TScalar>(Vector2<TScalar> left, Vector2<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
-            IUnaryNegationOperators<TScalar, TScalar>
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
             => left.X * right.X + left.Y * right.Y;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -53,7 +94,8 @@ namespace EuclideanSpace
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
-            IUnaryNegationOperators<TScalar, TScalar>
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
             => (value1 - value2).LengthSquared();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -61,7 +103,8 @@ namespace EuclideanSpace
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
-            IUnaryNegationOperators<TScalar, TScalar>
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
         {
             ThrowHelpers.ThrowIfGreaterThanOrEqual((uint)index, (uint)Count);
 
@@ -73,7 +116,8 @@ namespace EuclideanSpace
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
-            IUnaryNegationOperators<TScalar, TScalar>
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
         {
             Debug.Assert(index is >= 0 and < Count);
             ref var address = ref Unsafe.AsRef(in vector._x);
