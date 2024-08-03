@@ -1,2 +1,3 @@
 [{Vector,Point}*.cs]
 dotnet_diagnostic.CA2225.severity = none # Operator overloads have named alternates
+resharper_inconsistent_naming_highlighting = none # InconsistentNaming
