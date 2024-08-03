@@ -7,7 +7,11 @@ namespace EuclideanSpace
 
     internal static class ThrowHelpers
     {
-        public static void ThrowIfGreaterThanOrEqual<T>(
+        [DoesNotReturn]
+        internal static void ThrowArgumentOutOfRangeException(string paramName) =>
+            throw new ArgumentOutOfRangeException(paramName);
+
+        internal static void ThrowIfGreaterThanOrEqual<T>(
             T value, T other, [CallerArgumentExpression(nameof(value))] string? paramName = null)
             where T : IComparable<T>
         {
