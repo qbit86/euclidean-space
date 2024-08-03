@@ -11,7 +11,9 @@ namespace EuclideanSpace
     public readonly partial struct Vector2<TScalar> :
         IEquatable<Vector2<TScalar>>,
         IFormattable,
-        IEqualityOperators<Vector2<TScalar>, Vector2<TScalar>, bool>
+        IEqualityOperators<Vector2<TScalar>, Vector2<TScalar>, bool>,
+        IAdditionOperators<Vector2<TScalar>, Vector2<TScalar>, Vector2<TScalar>>,
+        IMultiplyOperators<Vector2<TScalar>, Vector2<TScalar>, Vector2<TScalar>>
         where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
         IMultiplyOperators<TScalar, TScalar, TScalar>
     {
@@ -38,5 +40,20 @@ namespace EuclideanSpace
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public TScalar LengthSquared() => Vector2.Dot(this, this);
+
+        public static Vector2<TScalar> operator +(Vector2<TScalar> left, Vector2<TScalar> right) =>
+            new(left.X + right.X, left.Y + right.Y);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2<TScalar> operator *(Vector2<TScalar> left, Vector2<TScalar> right) =>
+            new(left.X * right.X, left.Y * right.Y);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2<TScalar> operator *(Vector2<TScalar> left, TScalar right) =>
+            left * new Vector2<TScalar>(right);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2<TScalar> operator *(TScalar left, Vector2<TScalar> right) =>
+            new Vector2<TScalar>(left) * right;
     }
 }
