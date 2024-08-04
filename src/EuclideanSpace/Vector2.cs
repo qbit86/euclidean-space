@@ -191,5 +191,15 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>,
             IMultiplicativeIdentity<TScalar, TScalar>
             => left * (TScalar.MultiplicativeIdentity - amount) + right * amount;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2<TScalar> Lerp<TScalar, TAmount>(
+            Vector2<TScalar> left, Vector2<TScalar> right, TAmount amount)
+            where TScalar : INumberBase<TScalar>
+            where TAmount : INumberBase<TAmount>
+        {
+            var leftWeight = TAmount.MultiplicativeIdentity - amount;
+            return left * TScalar.CreateChecked(leftWeight) + right * TScalar.CreateChecked(amount);
+        }
     }
 }
