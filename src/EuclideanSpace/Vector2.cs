@@ -156,6 +156,38 @@ namespace EuclideanSpace
             => left.X * right.X + left.Y * right.Y;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static TScalar Cross<TScalar>(Vector2<TScalar> left, Vector2<TScalar> right)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => left.X * right.Y - left.Y * right.X;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static TScalar Length<TScalar>(this Vector2<TScalar> value)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>,
+            IRootFunctions<TScalar>
+        {
+            var lengthSquared = value.LengthSquared();
+            return TScalar.Sqrt(lengthSquared);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2<TScalar> Normalize<TScalar>(this Vector2<TScalar> value)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>,
+            IRootFunctions<TScalar>
+            => value / value.Length();
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TScalar DistanceSquared<TScalar>(Vector2<TScalar> value1, Vector2<TScalar> value2)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
@@ -163,6 +195,26 @@ namespace EuclideanSpace
             IUnaryNegationOperators<TScalar, TScalar>,
             IDivisionOperators<TScalar, TScalar, TScalar>
             => (value1 - value2).LengthSquared();
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static TScalar Distance<TScalar>(Vector2<TScalar> value1, Vector2<TScalar> value2)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>,
+            IRootFunctions<TScalar>
+            => (value1 - value2).Length();
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2<TScalar> Lerp<TScalar>(Vector2<TScalar> left, Vector2<TScalar> right, TScalar amount)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>,
+            IMultiplicativeIdentity<TScalar, TScalar>
+            => left * (TScalar.MultiplicativeIdentity - amount) + right * amount;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static TScalar GetElement<TScalar>(this Vector2<TScalar> vector, int index)
