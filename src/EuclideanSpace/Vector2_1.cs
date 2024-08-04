@@ -36,6 +36,15 @@ namespace EuclideanSpace
             _y = y;
         }
 
+        public Vector2(ReadOnlySpan<TScalar> elements)
+        {
+            if (elements.Length < Vector2.Count)
+                ThrowHelpers.ThrowArgumentOutOfRangeException(nameof(elements));
+
+            _x = elements[0];
+            _y = elements[1];
+        }
+
         public TScalar X => _x;
 
         public TScalar Y => _y;

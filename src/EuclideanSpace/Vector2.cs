@@ -6,7 +6,16 @@ namespace EuclideanSpace
 
     public static partial class Vector2
     {
-        private const int Count = 2;
+        internal const int Count = 2;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2<TScalar> Create<TScalar>(TScalar value)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => new(value);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> Create<TScalar>(TScalar x, TScalar y)
