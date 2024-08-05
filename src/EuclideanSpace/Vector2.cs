@@ -210,8 +210,10 @@ namespace EuclideanSpace
             where TScalar : INumberBase<TScalar>
             where TAmount : INumberBase<TAmount>
         {
-            var weight1 = TAmount.MultiplicativeIdentity - amount;
-            return value1 * TScalar.CreateChecked(weight1) + value2 * TScalar.CreateChecked(amount);
+            var weight1 = TAmount.One - amount;
+            var first = Vector2Conversions<TAmount>.AsVector2(value1) * weight1;
+            var second = Vector2Conversions<TAmount>.AsVector2(value2) * amount;
+            return Vector2Conversions<TScalar>.AsVector2(first + second);
         }
     }
 }
