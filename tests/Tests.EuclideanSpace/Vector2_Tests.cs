@@ -8,8 +8,11 @@ public sealed class Vector2_Tests
 
     public static TheoryData<Vector2<int>, Vector2<int>, int> CrossTheoryData { get; } = CreateCrossTheoryData();
 
+    public static TheoryData<Vector2<float>, Vector2<float>, double, Vector2<float>>
+        LerpSingleDoubleTheoryData { get; } = CreateLerpSingleDoubleTheoryData();
+
     [Theory]
-    [MemberData(nameof(DotTheoryData), MemberType = typeof(Vector2_Tests))]
+    [MemberData(nameof(DotTheoryData))]
     public void Dot(Vector2<int> left, Vector2<int> right, int expected)
     {
         int actual = Vector2.Dot(left, right);
@@ -17,11 +20,27 @@ public sealed class Vector2_Tests
     }
 
     [Theory]
-    [MemberData(nameof(CrossTheoryData), MemberType = typeof(Vector2_Tests))]
+    [MemberData(nameof(CrossTheoryData))]
     public void Cross(Vector2<int> left, Vector2<int> right, int expected)
     {
         int actual = Vector2.Cross(left, right);
         Assert.Equal(expected, actual);
+    }
+
+    [Theory]
+    [MemberData(nameof(LerpSingleDoubleTheoryData))]
+    public void Lerp_SingleDouble(Vector2<float> first, Vector2<float> second, double amount, Vector2<float> expected)
+    {
+        var actual = Vector2.Lerp(first, second, amount);
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void Indexer()
+    {
+        Vector2<short> vector = new(3, 5);
+        Assert.Equal(3, vector[0]);
+        Assert.Equal(5, vector[1]);
     }
 
     private static TheoryData<Vector2<int>, Vector2<int>, int> CreateDotTheoryData() => new()
@@ -38,5 +57,11 @@ public sealed class Vector2_Tests
         { Vector2.UnitY<int>(), Vector2.UnitX<int>(), -1 },
         { new(3, 4), new(3, 4), 0 },
         { new(3, 4), new(4, -3), -25 }
+    };
+
+    private static TheoryData<Vector2<float>, Vector2<float>, double, Vector2<float>>
+        CreateLerpSingleDoubleTheoryData() => new()
+    {
+        { new(-2f, -1f), new(1f, 5f), 2.0 / 3.0, new(0f, 3f) }
     };
 }
