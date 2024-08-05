@@ -7,6 +7,15 @@ namespace EuclideanSpace
     public static partial class Point2
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2<TScalar> AsVector2<TScalar>(this Point2<TScalar> point)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => new(point.X, point.Y);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static TScalar GetElementUnsafe<TScalar>(in this Point2<TScalar> point, int index)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
