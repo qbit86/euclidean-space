@@ -70,8 +70,8 @@ namespace EuclideanSpace
             left * new Vector2<TScalar>(right);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2<TScalar> operator *(TScalar left, Vector2<TScalar> right) =>
-            new Vector2<TScalar>(left) * right;
+        public static Vector2<TScalar> operator *(TScalar scalar, Vector2<TScalar> vector) =>
+            new Vector2<TScalar>(scalar) * vector;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> operator -(Vector2<TScalar> left, Vector2<TScalar> right) =>

@@ -192,23 +192,26 @@ namespace EuclideanSpace
             => (value1 - value2).Length();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2<TScalar> Lerp<TScalar>(Vector2<TScalar> left, Vector2<TScalar> right, TScalar amount)
+        public static Vector2<TScalar> Lerp<TScalar>(Vector2<TScalar> value1, Vector2<TScalar> value2, TScalar amount)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
             IUnaryNegationOperators<TScalar, TScalar>,
             IDivisionOperators<TScalar, TScalar, TScalar>,
             IMultiplicativeIdentity<TScalar, TScalar>
-            => left * (TScalar.MultiplicativeIdentity - amount) + right * amount;
+        {
+            var weight1 = TScalar.MultiplicativeIdentity - amount;
+            return value1 * weight1 + value2 * amount;
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> Lerp<TScalar, TAmount>(
-            Vector2<TScalar> left, Vector2<TScalar> right, TAmount amount)
+            Vector2<TScalar> value1, Vector2<TScalar> value2, TAmount amount)
             where TScalar : INumberBase<TScalar>
             where TAmount : INumberBase<TAmount>
         {
-            var leftWeight = TAmount.MultiplicativeIdentity - amount;
-            return left * TScalar.CreateChecked(leftWeight) + right * TScalar.CreateChecked(amount);
+            var weight1 = TAmount.MultiplicativeIdentity - amount;
+            return value1 * TScalar.CreateChecked(weight1) + value2 * TScalar.CreateChecked(amount);
         }
     }
 }
