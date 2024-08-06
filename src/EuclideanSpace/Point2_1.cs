@@ -31,7 +31,7 @@ namespace EuclideanSpace
 
         public Point2(ReadOnlySpan<TScalar> elements)
         {
-            if (elements.Length < Vector2.Count)
+            if (elements.Length < Point2.Count)
                 ThrowHelpers.ThrowArgumentOutOfRangeException(nameof(elements));
 
             _x = elements[0];
