@@ -14,6 +14,8 @@ public sealed class Vector2_Tests
     public static TheoryData<Vector2<decimal>, Vector2<decimal>, decimal, Vector2<decimal>>
         LerpDecimalTheoryData { get; } = CreateLerpDecimalTheoryData();
 
+    public static TheoryData<Vector2<double>, double> LengthTheoryData { get; } = CreateLengthTheoryData();
+
     [Theory]
     [MemberData(nameof(DotTheoryData))]
     public void Dot(Vector2<int> left, Vector2<int> right, int expected)
@@ -44,6 +46,14 @@ public sealed class Vector2_Tests
     {
         var actual = Vector2.Lerp(first, second, amount);
         Assert.Equal(expected, actual, Vector2TolerantComparer.Default<decimal>());
+    }
+
+    [Theory]
+    [MemberData(nameof(LengthTheoryData))]
+    public void Length(Vector2<double> vector, double expected)
+    {
+        double actual = vector.Length();
+        Assert.Equal(expected, actual);
     }
 
     [Fact]
@@ -80,5 +90,11 @@ public sealed class Vector2_Tests
         CreateLerpDecimalTheoryData() => new()
     {
         { new(-2m, -1m), new(1m, 5m), 2m / 3m, new(0m, 3m) }
+    };
+
+    private static TheoryData<Vector2<double>, double> CreateLengthTheoryData() => new()
+    {
+        { new(-3.0, 4.0), 5.0 },
+        { Vector2.One<double>(), double.Sqrt(2.0) }
     };
 }
