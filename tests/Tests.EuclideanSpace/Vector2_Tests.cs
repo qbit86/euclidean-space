@@ -34,7 +34,7 @@ public sealed class Vector2_Tests
     [MemberData(nameof(LerpSingleDoubleTheoryData))]
     public void Lerp_SingleDouble(Vector2<float> first, Vector2<float> second, double amount, Vector2<float> expected)
     {
-        var actual = Vector2.Lerp(first, second, amount);
+        var actual = Vector2Conversions.Lerp(first, second, amount);
         Assert.Equal(expected, actual, Vector2TolerantComparer.Default<float>());
     }
 
@@ -42,7 +42,7 @@ public sealed class Vector2_Tests
     [MemberData(nameof(LerpDecimalTheoryData))]
     public void Lerp_Decimal(Vector2<decimal> first, Vector2<decimal> second, decimal amount, Vector2<decimal> expected)
     {
-        var actual = Vector2.Lerp<decimal>(first, second, amount);
+        var actual = Vector2.Lerp(first, second, amount);
         Assert.Equal(expected, actual, Vector2TolerantComparer.Default<decimal>());
     }
 

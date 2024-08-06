@@ -149,15 +149,5 @@ namespace EuclideanSpace
             var combination = Vector2.Lerp(value1.AsVector2(), value2.AsVector2(), amount);
             return Create(combination);
         }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point2<TScalar> Lerp<TScalar, TAmount>(
-            Point2<TScalar> value1, Point2<TScalar> value2, TAmount amount)
-            where TScalar : INumberBase<TScalar>
-            where TAmount : INumberBase<TAmount>
-        {
-            var combination = Vector2.Lerp(value1.AsVector2(), value2.AsVector2(), amount);
-            return Create(combination);
-        }
     }
 }
