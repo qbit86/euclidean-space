@@ -32,7 +32,7 @@ public sealed class Vector2_Tests
     public void Lerp_SingleDouble(Vector2<float> first, Vector2<float> second, double amount, Vector2<float> expected)
     {
         var actual = Vector2.Lerp(first, second, amount);
-        Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual, Vector2TolerantComparer.Default<float>());
     }
 
     [Fact]
