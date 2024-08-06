@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace EuclideanSpace;
@@ -25,9 +26,9 @@ public sealed class Point2_Tests
     [Fact]
     public void Subtract()
     {
-        var first = Point2.Create(5, -1);
-        var second = Point2.Create(3, 4);
-        var expected = Vector2.Create(2, -5);
+        var first = Point2Conversions<Half>.Create(5, -1);
+        var second = Point2Conversions<Half>.Create(3, 4);
+        var expected = Vector2Conversions<Half>.Create(2, -5);
         var actual = first - second;
         Assert.Equal(expected, actual);
     }
