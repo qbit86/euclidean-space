@@ -11,6 +11,9 @@ public sealed class Vector2_Tests
     public static TheoryData<Vector2<float>, Vector2<float>, double, Vector2<float>>
         LerpSingleDoubleTheoryData { get; } = CreateLerpSingleDoubleTheoryData();
 
+    public static TheoryData<Vector2<decimal>, Vector2<decimal>, decimal, Vector2<decimal>>
+        LerpDecimalTheoryData { get; } = CreateLerpDecimalTheoryData();
+
     [Theory]
     [MemberData(nameof(DotTheoryData))]
     public void Dot(Vector2<int> left, Vector2<int> right, int expected)
@@ -33,6 +36,14 @@ public sealed class Vector2_Tests
     {
         var actual = Vector2.Lerp(first, second, amount);
         Assert.Equal(expected, actual, Vector2TolerantComparer.Default<float>());
+    }
+
+    [Theory]
+    [MemberData(nameof(LerpDecimalTheoryData))]
+    public void Lerp_Decimal(Vector2<decimal> first, Vector2<decimal> second, decimal amount, Vector2<decimal> expected)
+    {
+        var actual = Vector2.Lerp<decimal>(first, second, amount);
+        Assert.Equal(expected, actual, Vector2TolerantComparer.Default<decimal>());
     }
 
     [Fact]
@@ -63,5 +74,11 @@ public sealed class Vector2_Tests
         CreateLerpSingleDoubleTheoryData() => new()
     {
         { new(-2f, -1f), new(1f, 5f), 2.0 / 3.0, new(0f, 3f) }
+    };
+
+    private static TheoryData<Vector2<decimal>, Vector2<decimal>, decimal, Vector2<decimal>>
+        CreateLerpDecimalTheoryData() => new()
+    {
+        { new(-2m, -1m), new(1m, 5m), 2m / 3m, new(0m, 3m) }
     };
 }
