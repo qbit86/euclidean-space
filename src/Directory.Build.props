@@ -1,0 +1,32 @@
+<Project>
+  <Import Project="../Directory.Build.props" />
+  <PropertyGroup>
+    <Authors>Viktor Tselov</Authors>
+    <Copyright>Copyright (c) Viktor Tselov 2024</Copyright>
+    <IncludeSymbols>true</IncludeSymbols>
+    <!-- <PackageIcon>icon.png</PackageIcon> -->
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReleaseNotes>https://github.com/qbit86/euclidean-space/blob/develop/CHANGELOG.md</PackageReleaseNotes>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/qbit86/euclidean-space</RepositoryUrl>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <VersionPrefix>0.1.0</VersionPrefix>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>$(RepoRoot)assets/euclidean-space.snk</AssemblyOriginatorKeyFile>
+    <ContinuousIntegrationBuild Condition="'$(Configuration)' == 'Release'">true</ContinuousIntegrationBuild>
+    <DebugType>portable</DebugType>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IsPackable>true</IsPackable>
+    <IsTrimmable Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net6.0'))">true</IsTrimmable>
+    <LangVersion>12</LangVersion>
+    <PackRelease>true</PackRelease>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- <None Include="$(RepoRoot)/assets/icon.png" Pack="true" PackagePath="" /> -->
+    <SourceRoot Include="$(RepoRoot)" />
+  </ItemGroup>
+</Project>
