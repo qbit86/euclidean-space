@@ -11,7 +11,8 @@ namespace EuclideanSpace
         IAdditionOperators<Point2<TScalar>, Vector2<TScalar>, Point2<TScalar>>,
         IMultiplyOperators<Point2<TScalar>, TScalar, Point2<TScalar>>,
         ISubtractionOperators<Point2<TScalar>, Point2<TScalar>, Vector2<TScalar>>,
-        IUnaryNegationOperators<Point2<TScalar>, Point2<TScalar>>
+        IUnaryNegationOperators<Point2<TScalar>, Point2<TScalar>>,
+        IDivisionOperators<Point2<TScalar>, TScalar, Point2<TScalar>>
         where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
         IMultiplyOperators<TScalar, TScalar, TScalar>,
         ISubtractionOperators<TScalar, TScalar, TScalar>,
@@ -67,5 +68,9 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TScalar> operator -(Point2<TScalar> value) =>
             new(-value.X, -value.Y);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Point2<TScalar> operator /(Point2<TScalar> left, TScalar right) =>
+            new(left.X / right, left.Y / right);
     }
 }
