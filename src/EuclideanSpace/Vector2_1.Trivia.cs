@@ -3,6 +3,7 @@ namespace EuclideanSpace
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.Runtime.CompilerServices;
 
     public readonly partial struct Vector2<TScalar>
     {
@@ -24,8 +25,10 @@ namespace EuclideanSpace
 
         public override int GetHashCode() => HashCode.Combine(_x, _y);
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool operator ==(Vector2<TScalar> left, Vector2<TScalar> right) => left.Equals(right);
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool operator !=(Vector2<TScalar> left, Vector2<TScalar> right) => !left.Equals(right);
     }
 }
