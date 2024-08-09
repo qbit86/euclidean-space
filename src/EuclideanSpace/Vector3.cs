@@ -173,5 +173,49 @@ namespace EuclideanSpace
             IUnaryNegationOperators<TScalar, TScalar>,
             IDivisionOperators<TScalar, TScalar, TScalar>
             => left.X * right.X + left.Y * right.Y + left.Z * right.Z;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3<TScalar> Cross<TScalar>(Vector3<TScalar> left, Vector3<TScalar> right)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => new(
+                left.Y * right.Z - left.Z * right.Y,
+                left.Z * right.X - left.X * right.Z,
+                left.X * right.Y - left.Y * right.X);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static TScalar DistanceSquared<TScalar>(Vector3<TScalar> value1, Vector3<TScalar> value2)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => (value1 - value2).LengthSquared();
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static TScalar Distance<TScalar>(Vector3<TScalar> value1, Vector3<TScalar> value2)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>,
+            IRootFunctions<TScalar>
+            => (value1 - value2).Length();
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3<TScalar> Lerp<TScalar>(Vector3<TScalar> value1, Vector3<TScalar> value2, TScalar amount)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>,
+            IMultiplicativeIdentity<TScalar, TScalar>
+        {
+            var weight1 = TScalar.MultiplicativeIdentity - amount;
+            return value1 * weight1 + value2 * amount;
+        }
     }
 }

@@ -7,6 +7,29 @@ namespace EuclideanSpace
     public static partial class Vector3
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static TScalar Length<TScalar>(this Vector3<TScalar> value)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>,
+            IRootFunctions<TScalar>
+        {
+            var lengthSquared = value.LengthSquared();
+            return TScalar.Sqrt(lengthSquared);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3<TScalar> Normalize<TScalar>(this Vector3<TScalar> value)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>,
+            IRootFunctions<TScalar>
+            => value / value.Length();
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static TScalar GetElementUnsafe<TScalar>(in this Vector3<TScalar> vector, int index)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
