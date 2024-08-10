@@ -3,7 +3,9 @@ namespace EuclideanSpace
     using System;
     using System.Numerics;
 
-    public readonly partial struct Point3<TScalar>
+    public readonly partial struct Point3<TScalar> :
+        IEquatable<Point3<TScalar>>,
+        IFormattable
         where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
         IMultiplyOperators<TScalar, TScalar, TScalar>,
         ISubtractionOperators<TScalar, TScalar, TScalar>,
