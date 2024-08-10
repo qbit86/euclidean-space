@@ -24,6 +24,8 @@ namespace EuclideanSpace
         private readonly TScalar _y;
         private readonly TScalar _z;
 
+        public Point3(TScalar value) : this(value, value, value) { }
+
         public Point3(TScalar x, TScalar y, TScalar z)
         {
             _x = x;
