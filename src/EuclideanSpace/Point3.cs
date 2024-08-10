@@ -48,5 +48,58 @@ namespace EuclideanSpace
             IUnaryNegationOperators<TScalar, TScalar>,
             IDivisionOperators<TScalar, TScalar, TScalar>
             => new(vector.X, vector.Y, vector.Z);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Point3<TScalar> Zero<TScalar>()
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>
+            => new(TScalar.AdditiveIdentity);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Point3<TScalar> One<TScalar>()
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>,
+            IMultiplicativeIdentity<TScalar, TScalar>
+            => new(TScalar.MultiplicativeIdentity);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Point3<TScalar> UnitX<TScalar>()
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>,
+            IMultiplicativeIdentity<TScalar, TScalar>
+            => new(TScalar.MultiplicativeIdentity, TScalar.AdditiveIdentity, TScalar.AdditiveIdentity);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Point3<TScalar> UnitY<TScalar>()
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>,
+            IMultiplicativeIdentity<TScalar, TScalar>
+            => new(TScalar.AdditiveIdentity, TScalar.MultiplicativeIdentity, TScalar.AdditiveIdentity);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Point3<TScalar> UnitZ<TScalar>()
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>,
+            IMultiplicativeIdentity<TScalar, TScalar>
+            => new(TScalar.AdditiveIdentity, TScalar.AdditiveIdentity, TScalar.MultiplicativeIdentity);
     }
 }
