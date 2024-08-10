@@ -6,7 +6,7 @@ namespace EuclideanSpace
 
     public static partial class Point2
     {
-        internal const int Count = 2;
+        internal const int Count = Vector2.Count;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TScalar> Create<TScalar>(TScalar value)
