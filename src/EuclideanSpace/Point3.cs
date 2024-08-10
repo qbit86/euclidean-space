@@ -101,5 +101,82 @@ namespace EuclideanSpace
             IAdditiveIdentity<TScalar, TScalar>,
             IMultiplicativeIdentity<TScalar, TScalar>
             => new(TScalar.AdditiveIdentity, TScalar.AdditiveIdentity, TScalar.MultiplicativeIdentity);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Point3<TScalar> Add<TScalar>(Point3<TScalar> left, Vector3<TScalar> right)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => left + right;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3<TScalar> Subtract<TScalar>(Point3<TScalar> left, Point3<TScalar> right)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => left - right;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Point3<TScalar> Subtract<TScalar>(Point3<TScalar> left, Vector3<TScalar> right)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => left - right;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Point3<TScalar> Negate<TScalar>(Point3<TScalar> value)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => -value;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Point3<TScalar> Divide<TScalar>(Point3<TScalar> left, TScalar right)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => left / right;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static TScalar DistanceSquared<TScalar>(Point3<TScalar> value1, Point3<TScalar> value2)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => (value1 - value2).LengthSquared();
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static TScalar Distance<TScalar>(Point3<TScalar> value1, Point3<TScalar> value2)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>,
+            IRootFunctions<TScalar>
+            => (value1 - value2).Length();
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Point3<TScalar> Lerp<TScalar>(Point3<TScalar> value1, Point3<TScalar> value2, TScalar amount)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>,
+            IMultiplicativeIdentity<TScalar, TScalar>
+        {
+            var combination = Vector3.Lerp(value1.AsVector3(), value2.AsVector3(), amount);
+            return Create(combination);
+        }
     }
 }
