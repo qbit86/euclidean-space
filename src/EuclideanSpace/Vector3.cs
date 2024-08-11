@@ -4,12 +4,12 @@ namespace EuclideanSpace
     using System.Numerics;
     using System.Runtime.CompilerServices;
 
-    public static partial class Point2
+    public static partial class Vector3
     {
-        internal const int Count = Vector2.Count;
+        internal const int Count = 3;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point2<TScalar> Create<TScalar>(TScalar value)
+        public static Vector3<TScalar> Create<TScalar>(TScalar value)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
@@ -18,16 +18,16 @@ namespace EuclideanSpace
             => new(value);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point2<TScalar> Create<TScalar>(TScalar x, TScalar y)
+        public static Vector3<TScalar> Create<TScalar>(TScalar x, TScalar y, TScalar z)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
             IUnaryNegationOperators<TScalar, TScalar>,
             IDivisionOperators<TScalar, TScalar, TScalar>
-            => new(x, y);
+            => new(x, y, z);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point2<TScalar> Create<TScalar>(ReadOnlySpan<TScalar> elements)
+        public static Vector3<TScalar> Create<TScalar>(ReadOnlySpan<TScalar> elements)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
@@ -37,20 +37,11 @@ namespace EuclideanSpace
             if (elements.Length < Count)
                 ThrowHelpers.ThrowArgumentOutOfRangeException(nameof(elements));
 
-            return new(elements[0], elements[1]);
+            return new(elements[0], elements[1], elements[2]);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point2<TScalar> Create<TScalar>(Vector2<TScalar> vector)
-            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
-            IMultiplyOperators<TScalar, TScalar, TScalar>,
-            ISubtractionOperators<TScalar, TScalar, TScalar>,
-            IUnaryNegationOperators<TScalar, TScalar>,
-            IDivisionOperators<TScalar, TScalar, TScalar>
-            => new(vector.X, vector.Y);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point2<TScalar> Zero<TScalar>()
+        public static Vector3<TScalar> Zero<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
@@ -60,7 +51,7 @@ namespace EuclideanSpace
             => new(TScalar.AdditiveIdentity);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point2<TScalar> One<TScalar>()
+        public static Vector3<TScalar> One<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
@@ -70,7 +61,7 @@ namespace EuclideanSpace
             => new(TScalar.MultiplicativeIdentity);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point2<TScalar> UnitX<TScalar>()
+        public static Vector3<TScalar> UnitX<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
@@ -78,10 +69,10 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>,
             IAdditiveIdentity<TScalar, TScalar>,
             IMultiplicativeIdentity<TScalar, TScalar>
-            => new(TScalar.MultiplicativeIdentity, TScalar.AdditiveIdentity);
+            => new(TScalar.MultiplicativeIdentity, TScalar.AdditiveIdentity, TScalar.AdditiveIdentity);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point2<TScalar> UnitY<TScalar>()
+        public static Vector3<TScalar> UnitY<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
@@ -89,10 +80,21 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>,
             IAdditiveIdentity<TScalar, TScalar>,
             IMultiplicativeIdentity<TScalar, TScalar>
-            => new(TScalar.AdditiveIdentity, TScalar.MultiplicativeIdentity);
+            => new(TScalar.AdditiveIdentity, TScalar.MultiplicativeIdentity, TScalar.AdditiveIdentity);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point2<TScalar> Add<TScalar>(Point2<TScalar> left, Vector2<TScalar> right)
+        public static Vector3<TScalar> UnitZ<TScalar>()
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>,
+            IMultiplicativeIdentity<TScalar, TScalar>
+            => new(TScalar.AdditiveIdentity, TScalar.AdditiveIdentity, TScalar.MultiplicativeIdentity);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3<TScalar> Add<TScalar>(Vector3<TScalar> left, Vector3<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
@@ -101,7 +103,34 @@ namespace EuclideanSpace
             => left + right;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2<TScalar> Subtract<TScalar>(Point2<TScalar> left, Point2<TScalar> right)
+        public static Vector3<TScalar> Multiply<TScalar>(Vector3<TScalar> left, Vector3<TScalar> right)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => left * right;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3<TScalar> Multiply<TScalar>(Vector3<TScalar> left, TScalar right)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => left * right;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3<TScalar> Multiply<TScalar>(TScalar left, Vector3<TScalar> right)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => left * right;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3<TScalar> Subtract<TScalar>(Vector3<TScalar> left, Vector3<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
@@ -110,16 +139,7 @@ namespace EuclideanSpace
             => left - right;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point2<TScalar> Subtract<TScalar>(Point2<TScalar> left, Vector2<TScalar> right)
-            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
-            IMultiplyOperators<TScalar, TScalar, TScalar>,
-            ISubtractionOperators<TScalar, TScalar, TScalar>,
-            IUnaryNegationOperators<TScalar, TScalar>,
-            IDivisionOperators<TScalar, TScalar, TScalar>
-            => left - right;
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point2<TScalar> Negate<TScalar>(Point2<TScalar> value)
+        public static Vector3<TScalar> Negate<TScalar>(Vector3<TScalar> value)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
@@ -128,7 +148,7 @@ namespace EuclideanSpace
             => -value;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point2<TScalar> Divide<TScalar>(Point2<TScalar> left, TScalar right)
+        public static Vector3<TScalar> Divide<TScalar>(Vector3<TScalar> left, Vector3<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
@@ -137,7 +157,37 @@ namespace EuclideanSpace
             => left / right;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static TScalar DistanceSquared<TScalar>(Point2<TScalar> value1, Point2<TScalar> value2)
+        public static Vector3<TScalar> Divide<TScalar>(Vector3<TScalar> left, TScalar right)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => left / right;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static TScalar Dot<TScalar>(Vector3<TScalar> left, Vector3<TScalar> right)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => left.X * right.X + left.Y * right.Y + left.Z * right.Z;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3<TScalar> Cross<TScalar>(Vector3<TScalar> left, Vector3<TScalar> right)
+            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IMultiplyOperators<TScalar, TScalar, TScalar>,
+            ISubtractionOperators<TScalar, TScalar, TScalar>,
+            IUnaryNegationOperators<TScalar, TScalar>,
+            IDivisionOperators<TScalar, TScalar, TScalar>
+            => new(
+                left.Y * right.Z - left.Z * right.Y,
+                left.Z * right.X - left.X * right.Z,
+                left.X * right.Y - left.Y * right.X);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static TScalar DistanceSquared<TScalar>(Vector3<TScalar> value1, Vector3<TScalar> value2)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
@@ -146,7 +196,7 @@ namespace EuclideanSpace
             => (value1 - value2).LengthSquared();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static TScalar Distance<TScalar>(Point2<TScalar> value1, Point2<TScalar> value2)
+        public static TScalar Distance<TScalar>(Vector3<TScalar> value1, Vector3<TScalar> value2)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
@@ -156,7 +206,7 @@ namespace EuclideanSpace
             => (value1 - value2).Length();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point2<TScalar> Lerp<TScalar>(Point2<TScalar> value1, Point2<TScalar> value2, TScalar amount)
+        public static Vector3<TScalar> Lerp<TScalar>(Vector3<TScalar> value1, Vector3<TScalar> value2, TScalar amount)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
@@ -164,8 +214,8 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>,
             IMultiplicativeIdentity<TScalar, TScalar>
         {
-            var combination = Vector2.Lerp(value1.AsVector2(), value2.AsVector2(), amount);
-            return Create(combination);
+            var weight1 = TScalar.MultiplicativeIdentity - amount;
+            return value1 * weight1 + value2 * amount;
         }
     }
 }

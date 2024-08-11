@@ -11,7 +11,9 @@ namespace EuclideanSpace
         IAdditionOperators<Point2<TScalar>, Vector2<TScalar>, Point2<TScalar>>,
         IMultiplyOperators<Point2<TScalar>, TScalar, Point2<TScalar>>,
         ISubtractionOperators<Point2<TScalar>, Point2<TScalar>, Vector2<TScalar>>,
-        IUnaryNegationOperators<Point2<TScalar>, Point2<TScalar>>
+        ISubtractionOperators<Point2<TScalar>, Vector2<TScalar>, Point2<TScalar>>,
+        IUnaryNegationOperators<Point2<TScalar>, Point2<TScalar>>,
+        IDivisionOperators<Point2<TScalar>, TScalar, Point2<TScalar>>
         where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
         IMultiplyOperators<TScalar, TScalar, TScalar>,
         ISubtractionOperators<TScalar, TScalar, TScalar>,
@@ -48,9 +50,11 @@ namespace EuclideanSpace
             get => this.GetElement(index);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TScalar> operator +(Point2<TScalar> point, Vector2<TScalar> vector) =>
             new(point.X + vector.X, point.Y + vector.Y);
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TScalar> operator *(Point2<TScalar> left, TScalar right) =>
             new(left.X * right, left.Y * right);
 
@@ -58,10 +62,20 @@ namespace EuclideanSpace
         public static Point2<TScalar> operator *(TScalar scalar, Point2<TScalar> point) =>
             new(scalar * point.X, scalar * point.Y);
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> operator -(Point2<TScalar> left, Point2<TScalar> right) =>
             new(left.X - right.X, left.Y - right.Y);
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Point2<TScalar> operator -(Point2<TScalar> left, Vector2<TScalar> right) =>
+            new(left.X - right.X, left.Y - right.Y);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TScalar> operator -(Point2<TScalar> value) =>
             new(-value.X, -value.Y);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Point2<TScalar> operator /(Point2<TScalar> left, TScalar right) =>
+            new(left.X / right, left.Y / right);
     }
 }
