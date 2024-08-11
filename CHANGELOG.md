@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased] - 2024-08-12
+
+### Changed
+
+- Fixed a bug in the subtraction of `Vector3<TScalar>`.
+
 ## [0.1.1-preview] - 2024-08-11
 
 ### Added
