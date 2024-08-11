@@ -77,7 +77,7 @@ namespace EuclideanSpace
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> operator -(Vector3<TScalar> left, Vector3<TScalar> right) =>
-            new(left.X - right.X, left.Y - right.Y, left.Z * right.Z);
+            new(left.X - right.X, left.Y - right.Y, left.Z - right.Z);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> operator -(Vector3<TScalar> value) =>
