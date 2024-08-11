@@ -1,5 +1,14 @@
 # Changelog
 
+## [Unreleased] - 2024-08-11
+
+### Added
+
+- `Vector3<TScalar>`, `Vector3`
+- `Vector3Conversions<TTarget>`, `Vector3Conversions`
+- `Point3<TScalar>`, `Point3`
+- `Point3Conversions<TTarget>`, `Point3Conversions`
+
 ## [0.1.0-preview] - 2024-08-07
 
 ### Added
