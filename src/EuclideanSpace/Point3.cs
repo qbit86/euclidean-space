@@ -130,24 +130,6 @@ namespace EuclideanSpace
             => left - right;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point3<TScalar> Negate<TScalar>(Point3<TScalar> value)
-            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
-            IMultiplyOperators<TScalar, TScalar, TScalar>,
-            ISubtractionOperators<TScalar, TScalar, TScalar>,
-            IUnaryNegationOperators<TScalar, TScalar>,
-            IDivisionOperators<TScalar, TScalar, TScalar>
-            => -value;
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point3<TScalar> Divide<TScalar>(Point3<TScalar> left, TScalar right)
-            where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
-            IMultiplyOperators<TScalar, TScalar, TScalar>,
-            ISubtractionOperators<TScalar, TScalar, TScalar>,
-            IUnaryNegationOperators<TScalar, TScalar>,
-            IDivisionOperators<TScalar, TScalar, TScalar>
-            => left / right;
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TScalar DistanceSquared<TScalar>(Point3<TScalar> value1, Point3<TScalar> value2)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
