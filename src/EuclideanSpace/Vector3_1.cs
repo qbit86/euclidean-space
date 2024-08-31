@@ -9,6 +9,7 @@ namespace EuclideanSpace
         IFormattable,
         IEqualityOperators<Vector3<TScalar>, Vector3<TScalar>, bool>,
         IAdditionOperators<Vector3<TScalar>, Vector3<TScalar>, Vector3<TScalar>>,
+        IAdditiveIdentity<Vector3<TScalar>, Vector3<TScalar>>,
         IMultiplyOperators<Vector3<TScalar>, Vector3<TScalar>, Vector3<TScalar>>,
         IMultiplyOperators<Vector3<TScalar>, TScalar, Vector3<TScalar>>,
         ISubtractionOperators<Vector3<TScalar>, Vector3<TScalar>, Vector3<TScalar>>,
@@ -16,6 +17,7 @@ namespace EuclideanSpace
         IDivisionOperators<Vector3<TScalar>, Vector3<TScalar>, Vector3<TScalar>>,
         IDivisionOperators<Vector3<TScalar>, TScalar, Vector3<TScalar>>
         where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+        IAdditiveIdentity<TScalar, TScalar>,
         IMultiplyOperators<TScalar, TScalar, TScalar>,
         ISubtractionOperators<TScalar, TScalar, TScalar>,
         IUnaryNegationOperators<TScalar, TScalar>,
@@ -49,6 +51,12 @@ namespace EuclideanSpace
         public TScalar Y => _y;
 
         public TScalar Z => _z;
+
+        public static Vector3<TScalar> AdditiveIdentity
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => new(TScalar.AdditiveIdentity);
+        }
 
         public TScalar this[int index]
         {

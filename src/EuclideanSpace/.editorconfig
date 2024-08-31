@@ -2,5 +2,5 @@
 dotnet_diagnostic.CA2225.severity = none # Operator overloads have named alternates
 resharper_inconsistent_naming_highlighting = none # InconsistentNaming
 
-[*Conversions*.cs]
+[{*Conversions_1,Vector*_1}.cs]
 dotnet_diagnostic.CA1000.severity = none # Do not declare static members on generic types

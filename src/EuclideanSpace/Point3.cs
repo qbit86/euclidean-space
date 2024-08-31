@@ -11,6 +11,7 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point3<TScalar> Create<TScalar>(TScalar value)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
             IUnaryNegationOperators<TScalar, TScalar>,
@@ -20,6 +21,7 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point3<TScalar> Create<TScalar>(TScalar x, TScalar y, TScalar z)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
             IUnaryNegationOperators<TScalar, TScalar>,
@@ -29,6 +31,7 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point3<TScalar> Create<TScalar>(ReadOnlySpan<TScalar> elements)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
             IUnaryNegationOperators<TScalar, TScalar>,
@@ -43,6 +46,7 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point3<TScalar> Create<TScalar>(Vector3<TScalar> vector)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
             IUnaryNegationOperators<TScalar, TScalar>,
@@ -62,6 +66,7 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point3<TScalar> One<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
             IUnaryNegationOperators<TScalar, TScalar>,
@@ -105,6 +110,7 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point3<TScalar> Add<TScalar>(Point3<TScalar> left, Vector3<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
             IUnaryNegationOperators<TScalar, TScalar>,
@@ -114,6 +120,7 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> Subtract<TScalar>(Point3<TScalar> left, Point3<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
             IUnaryNegationOperators<TScalar, TScalar>,
@@ -123,6 +130,7 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point3<TScalar> Subtract<TScalar>(Point3<TScalar> left, Vector3<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
             IUnaryNegationOperators<TScalar, TScalar>,
@@ -132,6 +140,7 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TScalar DistanceSquared<TScalar>(Point3<TScalar> value1, Point3<TScalar> value2)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
             IUnaryNegationOperators<TScalar, TScalar>,
@@ -151,6 +160,7 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point3<TScalar> Lerp<TScalar>(Point3<TScalar> value1, Point3<TScalar> value2, TScalar amount)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
             IUnaryNegationOperators<TScalar, TScalar>,

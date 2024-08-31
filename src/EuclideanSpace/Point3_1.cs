@@ -12,6 +12,7 @@ namespace EuclideanSpace
         ISubtractionOperators<Point3<TScalar>, Point3<TScalar>, Vector3<TScalar>>,
         ISubtractionOperators<Point3<TScalar>, Vector3<TScalar>, Point3<TScalar>>
         where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+        IAdditiveIdentity<TScalar, TScalar>,
         IMultiplyOperators<TScalar, TScalar, TScalar>,
         ISubtractionOperators<TScalar, TScalar, TScalar>,
         IUnaryNegationOperators<TScalar, TScalar>,
