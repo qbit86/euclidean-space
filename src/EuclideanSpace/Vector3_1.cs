@@ -4,6 +4,10 @@ namespace EuclideanSpace
     using System.Numerics;
     using System.Runtime.CompilerServices;
 
+    /// <summary>
+    /// Represents a vector with three scalar components.
+    /// </summary>
+    /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
     public readonly partial struct Vector3<TScalar> :
         IEquatable<Vector3<TScalar>>,
         IFormattable,
@@ -27,8 +31,18 @@ namespace EuclideanSpace
         private readonly TScalar _y;
         private readonly TScalar _z;
 
+        /// <summary>
+        /// Creates a new <see cref="Vector3{T}"/> instance whose components have the same value.
+        /// </summary>
+        /// <param name="value">The value to assign to all components.</param>
         public Vector3(TScalar value) : this(value, value, value) { }
 
+        /// <summary>
+        /// Creates a vector whose components have the specified values.
+        /// </summary>
+        /// <param name="x">The value to assign to the <see cref="X"/> component.</param>
+        /// <param name="y">The value to assign to the <see cref="Y"/> component.</param>
+        /// <param name="z">The value to assign to the <see cref="Z"/> component.</param>
         public Vector3(TScalar x, TScalar y, TScalar z)
         {
             _x = x;
@@ -36,14 +50,18 @@ namespace EuclideanSpace
             _z = z;
         }
 
-        public Vector3(ReadOnlySpan<TScalar> elements)
+        /// <summary>
+        /// Constructs a vector from the given <see cref="ReadOnlySpan{TScalar}"/>. The span must contain at least 3 elements.
+        /// </summary>
+        /// <param name="values">The span of elements to assign to the vector.</param>
+        public Vector3(ReadOnlySpan<TScalar> values)
         {
-            if (elements.Length < Vector3.Count)
-                ThrowHelpers.ThrowArgumentOutOfRangeException(nameof(elements));
+            if (values.Length < Vector3.Count)
+                ThrowHelpers.ThrowArgumentOutOfRangeException(nameof(values));
 
-            _x = elements[0];
-            _y = elements[1];
-            _z = elements[2];
+            _x = values[0];
+            _y = values[1];
+            _z = values[2];
         }
 
         public TScalar X => _x;
