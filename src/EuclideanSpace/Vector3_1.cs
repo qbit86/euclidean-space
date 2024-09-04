@@ -64,24 +64,36 @@ namespace EuclideanSpace
             _z = values[2];
         }
 
+        ///<summary>The X component of the vector.</summary>
         public TScalar X => _x;
 
+        /// <summary>The Y component of the vector.</summary>
         public TScalar Y => _y;
 
+        /// <summary>The Z component of the vector.</summary>
         public TScalar Z => _z;
 
+        /// <inheritdoc cref="IAdditiveIdentity{TSelf, TResult}.AdditiveIdentity" />
         public static Vector3<TScalar> AdditiveIdentity
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => new(TScalar.AdditiveIdentity);
         }
 
+        /// <summary>Gets the element at the specified index.</summary>
+        /// <param name="index">The index of the element to get.</param>
+        /// <returns>The element at <paramref name="index" />.</returns>
+        /// /// <exception cref="ArgumentOutOfRangeException"><paramref name="index" /> was less than zero or greater than the number of elements.</exception>
         public TScalar this[int index]
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => this.GetElement(index);
         }
 
+        /// <summary>Returns the length of the vector squared.</summary>
+        /// <returns>The vector's length squared.</returns>
+        /// <remarks>This operation offers better performance than a call to the <see cref="Vector3.Length{TScalar}" /> method.</remarks>
+        /// <altmember cref="Vector3.Length{TScalar}"/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public TScalar LengthSquared() => Vector3.Dot(this, this);
 
