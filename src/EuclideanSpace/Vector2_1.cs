@@ -90,18 +90,28 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public TScalar LengthSquared() => Vector2.Dot(this, this);
 
+        /// <inheritdoc cref="IAdditionOperators{TSelf, TOther, TResult}.operator +" />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> operator +(Vector2<TScalar> left, Vector2<TScalar> right) =>
             new(left.X + right.X, left.Y + right.Y);
 
+        /// <inheritdoc cref="IMultiplyOperators{TSelf, TOther, TResult}.operator *" />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> operator *(Vector2<TScalar> left, Vector2<TScalar> right) =>
             new(left.X * right.X, left.Y * right.Y);
 
+        /// <summary>Multiplies the specified vector by the specified scalar value.</summary>
+        /// <param name="left">The vector.</param>
+        /// <param name="right">The scalar value.</param>
+        /// <returns>The scaled vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> operator *(Vector2<TScalar> left, TScalar right) =>
             left * new Vector2<TScalar>(right);
 
+        /// <summary>Multiplies the scalar value by the specified vector.</summary>
+        /// <param name="scalar">The scalar value.</param>
+        /// <param name="vector">The vector.</param>
+        /// <returns>The scaled vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> operator *(TScalar scalar, Vector2<TScalar> vector) =>
             new Vector2<TScalar>(scalar) * vector;
