@@ -19,7 +19,7 @@ namespace EuclideanSpace
         /// <returns>The string representation of the current instance.</returns>
         public override string ToString() => ToString("G", CultureInfo.InvariantCulture);
 
-        /// <inheritdoc cref="IEquatable{T}.Equals(T?)" />
+        /// <inheritdoc cref="IEquatable{T}.Equals(T)" />
         public bool Equals(Vector2<TScalar> other)
         {
             var c = EqualityComparer<TScalar>.Default;
