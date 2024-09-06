@@ -123,18 +123,25 @@ namespace EuclideanSpace
         public static Vector3<TScalar> operator *(TScalar scalar, Vector3<TScalar> vector) =>
             new Vector3<TScalar>(scalar) * vector;
 
+        /// <inheritdoc cref="ISubtractionOperators{TSelf, TOther, TResult}.operator -" />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> operator -(Vector3<TScalar> left, Vector3<TScalar> right) =>
             new(left.X - right.X, left.Y - right.Y, left.Z - right.Z);
 
+        /// <inheritdoc cref="IUnaryNegationOperators{TSelf, TResult}.op_UnaryNegation(TSelf)" />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> operator -(Vector3<TScalar> value) =>
             new(-value.X, -value.Y, -value.Z);
 
+        /// <inheritdoc cref="IDivisionOperators{TSelf, TOther, TResult}.operator /" />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> operator /(Vector3<TScalar> left, Vector3<TScalar> right) =>
             new(left.X / right.X, left.Y / right.Y, left.Z / right.Z);
 
+        /// <summary>Divides the specified vector by the specified scalar value.</summary>
+        /// <param name="left">The vector.</param>
+        /// <param name="right">The scalar value.</param>
+        /// <returns>The vector that results from the division.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> operator /(Vector3<TScalar> left, TScalar right) =>
             left / new Vector3<TScalar>(right);
