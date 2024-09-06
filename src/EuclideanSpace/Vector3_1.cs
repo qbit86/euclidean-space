@@ -32,7 +32,7 @@ namespace EuclideanSpace
         private readonly TScalar _z;
 
         /// <summary>
-        /// Creates a new <see cref="Vector3{T}"/> instance whose components have the same value.
+        /// Creates a new <see cref="Vector3{T}" /> instance whose components have the same value.
         /// </summary>
         /// <param name="value">The value to assign to all components.</param>
         public Vector3(TScalar value) : this(value, value, value) { }
@@ -40,9 +40,9 @@ namespace EuclideanSpace
         /// <summary>
         /// Creates a vector whose components have the specified values.
         /// </summary>
-        /// <param name="x">The value to assign to the <see cref="X"/> component.</param>
-        /// <param name="y">The value to assign to the <see cref="Y"/> component.</param>
-        /// <param name="z">The value to assign to the <see cref="Z"/> component.</param>
+        /// <param name="x">The value to assign to the <see cref="X" /> component.</param>
+        /// <param name="y">The value to assign to the <see cref="Y" /> component.</param>
+        /// <param name="z">The value to assign to the <see cref="Z" /> component.</param>
         public Vector3(TScalar x, TScalar y, TScalar z)
         {
             _x = x;
@@ -51,7 +51,7 @@ namespace EuclideanSpace
         }
 
         /// <summary>
-        /// Constructs a vector from the given <see cref="ReadOnlySpan{TScalar}"/>. The span must contain at least 3 elements.
+        /// Constructs a vector from the given <see cref="ReadOnlySpan{TScalar}" />. The span must contain at least 3 elements.
         /// </summary>
         /// <param name="values">The span of elements to assign to the vector.</param>
         public Vector3(ReadOnlySpan<TScalar> values)
@@ -83,7 +83,7 @@ namespace EuclideanSpace
         /// <summary>Gets the element at the specified index.</summary>
         /// <param name="index">The index of the element to get.</param>
         /// <returns>The element at <paramref name="index" />.</returns>
-        /// /// <exception cref="ArgumentOutOfRangeException"><paramref name="index" /> was less than zero or greater than the number of elements.</exception>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="index" /> was less than zero or greater than the number of elements.</exception>
         public TScalar this[int index]
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -93,7 +93,7 @@ namespace EuclideanSpace
         /// <summary>Returns the length of the vector squared.</summary>
         /// <returns>The vector's length squared.</returns>
         /// <remarks>This operation offers better performance than a call to the <see cref="Vector3.Length{TScalar}" /> method.</remarks>
-        /// <altmember cref="Vector3.Length{TScalar}"/>
+        /// <altmember cref="Vector3.Length{TScalar}" />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public TScalar LengthSquared() => Vector3.Dot(this, this);
 
