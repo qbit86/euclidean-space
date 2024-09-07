@@ -66,7 +66,7 @@ namespace EuclideanSpace
         /// <summary>The Y component of the vector.</summary>
         public TScalar Y => _y;
 
-        /// <inheritdoc cref="IAdditiveIdentity{TSelf, TResult}.AdditiveIdentity" />
+        /// <inheritdoc />
         public static Vector2<TScalar> AdditiveIdentity
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -90,12 +90,12 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public TScalar LengthSquared() => Vector2.Dot(this, this);
 
-        /// <inheritdoc cref="IAdditionOperators{TSelf, TOther, TResult}.operator +" />
+        /// <inheritdoc />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> operator +(Vector2<TScalar> left, Vector2<TScalar> right) =>
             new(left.X + right.X, left.Y + right.Y);
 
-        /// <inheritdoc cref="IMultiplyOperators{TSelf, TOther, TResult}.operator *" />
+        /// <inheritdoc />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> operator *(Vector2<TScalar> left, Vector2<TScalar> right) =>
             new(left.X * right.X, left.Y * right.Y);
@@ -116,17 +116,17 @@ namespace EuclideanSpace
         public static Vector2<TScalar> operator *(TScalar scalar, Vector2<TScalar> vector) =>
             new Vector2<TScalar>(scalar) * vector;
 
-        /// <inheritdoc cref="ISubtractionOperators{TSelf, TOther, TResult}.operator -" />
+        /// <inheritdoc />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> operator -(Vector2<TScalar> left, Vector2<TScalar> right) =>
             new(left.X - right.X, left.Y - right.Y);
 
-        /// <inheritdoc cref="IUnaryNegationOperators{TSelf, TResult}.op_UnaryNegation(TSelf)" />
+        /// <inheritdoc />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> operator -(Vector2<TScalar> value) =>
             new(-value.X, -value.Y);
 
-        /// <inheritdoc cref="IDivisionOperators{TSelf, TOther, TResult}.operator /" />
+        /// <inheritdoc />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> operator /(Vector2<TScalar> left, Vector2<TScalar> right) =>
             new(left.X / right.X, left.Y / right.Y);

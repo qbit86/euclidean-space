@@ -73,7 +73,7 @@ namespace EuclideanSpace
         /// <summary>The Z component of the vector.</summary>
         public TScalar Z => _z;
 
-        /// <inheritdoc cref="IAdditiveIdentity{TSelf, TResult}.AdditiveIdentity" />
+        /// <inheritdoc />
         public static Vector3<TScalar> AdditiveIdentity
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -97,12 +97,12 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public TScalar LengthSquared() => Vector3.Dot(this, this);
 
-        /// <inheritdoc cref="IAdditionOperators{TSelf, TOther, TResult}.operator +" />
+        /// <inheritdoc />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> operator +(Vector3<TScalar> left, Vector3<TScalar> right) =>
             new(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
 
-        /// <inheritdoc cref="IMultiplyOperators{TSelf, TOther, TResult}.operator *" />
+        /// <inheritdoc />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> operator *(Vector3<TScalar> left, Vector3<TScalar> right) =>
             new(left.X * right.X, left.Y * right.Y, left.Z * right.Z);
@@ -123,17 +123,17 @@ namespace EuclideanSpace
         public static Vector3<TScalar> operator *(TScalar scalar, Vector3<TScalar> vector) =>
             new Vector3<TScalar>(scalar) * vector;
 
-        /// <inheritdoc cref="ISubtractionOperators{TSelf, TOther, TResult}.operator -" />
+        /// <inheritdoc />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> operator -(Vector3<TScalar> left, Vector3<TScalar> right) =>
             new(left.X - right.X, left.Y - right.Y, left.Z - right.Z);
 
-        /// <inheritdoc cref="IUnaryNegationOperators{TSelf, TResult}.op_UnaryNegation(TSelf)" />
+        /// <inheritdoc />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> operator -(Vector3<TScalar> value) =>
             new(-value.X, -value.Y, -value.Z);
 
-        /// <inheritdoc cref="IDivisionOperators{TSelf, TOther, TResult}.operator /" />
+        /// <inheritdoc />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> operator /(Vector3<TScalar> left, Vector3<TScalar> right) =>
             new(left.X / right.X, left.Y / right.Y, left.Z / right.Z);
