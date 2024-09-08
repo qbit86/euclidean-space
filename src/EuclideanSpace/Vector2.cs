@@ -4,10 +4,19 @@ namespace EuclideanSpace
     using System.Numerics;
     using System.Runtime.CompilerServices;
 
+    /// <summary>
+    /// Provides a collection of static methods for creating, manipulating, and otherwise operating on generic vectors.
+    /// </summary>
     public static partial class Vector2
     {
         internal const int Count = 2;
 
+        /// <summary>
+        /// Creates a new <see cref="Vector2{T}" /> instance with all components initialized to the specified value.
+        /// </summary>
+        /// <param name="value">The value that all components will be initialized to.</param>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>A new <see cref="Vector2{T}" /> with all components initialized to <paramref name="value" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> Create<TScalar>(TScalar value)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,

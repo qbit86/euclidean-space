@@ -4,10 +4,19 @@ namespace EuclideanSpace
     using System.Numerics;
     using System.Runtime.CompilerServices;
 
+    /// <summary>
+    /// Provides a collection of static methods for creating, manipulating, and otherwise operating on generic points.
+    /// </summary>
     public static partial class Point3
     {
         internal const int Count = Vector3.Count;
 
+        /// <summary>
+        /// Creates a new <see cref="Point3{T}" /> instance with all components initialized to the specified value.
+        /// </summary>
+        /// <param name="value">The value that all components will be initialized to.</param>
+        /// <typeparam name="TScalar">The type of the components of the point.</typeparam>
+        /// <returns>A new <see cref="Point3{T}" /> with all components initialized to <paramref name="value" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point3<TScalar> Create<TScalar>(TScalar value)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
