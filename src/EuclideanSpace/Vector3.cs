@@ -4,13 +4,15 @@ namespace EuclideanSpace
     using System.Numerics;
     using System.Runtime.CompilerServices;
 
-
     /// <summary>
     /// Provides a collection of static methods for creating, manipulating, and otherwise operating on generic vectors.
     /// </summary>
     public static partial class Vector3
     {
-        internal const int Count = 3;
+        /// <summary>
+        /// Gets the number of components that are in a <see cref="Vector3{T}" />.
+        /// </summary>
+        public const int Count = 3;
 
         /// <summary>
         /// Creates a new <see cref="Vector3{T}" /> instance with all components initialized to the specified value.
@@ -28,6 +30,14 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => new(value);
 
+        /// <summary>
+        /// Creates a new <see cref="Vector3{T}" /> instance with all components initialized to the specified values.
+        /// </summary>
+        /// <param name="x">The value to assign to the <see cref="Vector3{T}.X" /> component.</param>
+        /// <param name="y">The value to assign to the <see cref="Vector3{T}.Y" /> component.</param>
+        /// <param name="z">The value to assign to the <see cref="Vector3{T}.Z" /> component.</param>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>A new <see cref="Vector3{T}" /> with all components initialized to the specified values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> Create<TScalar>(TScalar x, TScalar y, TScalar z)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -38,8 +48,15 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => new(x, y, z);
 
+        /// <summary>
+        /// Creates a new <see cref="Vector3{T}" /> from a given readonly span.
+        /// </summary>
+        /// <param name="values">The readonly span from which the vector is created.</param>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>A new <see cref="Vector3{T}" /> with its components set to the first <see cref="Vector3.Count" /> elements from <paramref name="values" />.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">The length of <paramref name="values" /> is less than <see cref="Vector3.Count" />.</exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector3<TScalar> Create<TScalar>(ReadOnlySpan<TScalar> elements)
+        public static Vector3<TScalar> Create<TScalar>(ReadOnlySpan<TScalar> values)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IAdditiveIdentity<TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
@@ -47,10 +64,10 @@ namespace EuclideanSpace
             IUnaryNegationOperators<TScalar, TScalar>,
             IDivisionOperators<TScalar, TScalar, TScalar>
         {
-            if (elements.Length < Count)
-                ThrowHelpers.ThrowArgumentOutOfRangeException(nameof(elements));
+            if (values.Length < Count)
+                ThrowHelpers.ThrowArgumentOutOfRangeException(nameof(values));
 
-            return new(elements[0], elements[1], elements[2]);
+            return new(values[0], values[1], values[2]);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

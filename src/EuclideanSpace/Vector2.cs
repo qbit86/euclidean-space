@@ -9,7 +9,10 @@ namespace EuclideanSpace
     /// </summary>
     public static partial class Vector2
     {
-        internal const int Count = 2;
+        /// <summary>
+        /// Gets the number of components that are in a <see cref="Vector2{T}" />.
+        /// </summary>
+        public const int Count = 2;
 
         /// <summary>
         /// Creates a new <see cref="Vector2{T}" /> instance with all components initialized to the specified value.
@@ -27,6 +30,13 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => new(value);
 
+        /// <summary>
+        /// Creates a new <see cref="Vector2{T}" /> instance with all components initialized to the specified values.
+        /// </summary>
+        /// <param name="x">The value to assign to the <see cref="Vector2{T}.X" /> component.</param>
+        /// <param name="y">The value to assign to the <see cref="Vector2{T}.Y" /> component.</param>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>A new <see cref="Vector2{T}" /> with all components initialized to the specified values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> Create<TScalar>(TScalar x, TScalar y)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -37,8 +47,15 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => new(x, y);
 
+        /// <summary>
+        /// Creates a new <see cref="Vector2{T}" /> from a given readonly span.
+        /// </summary>
+        /// <param name="values">The readonly span from which the vector is created.</param>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>A new <see cref="Vector2{T}" /> with its components set to the first <see cref="Vector2.Count" /> elements from <paramref name="values" />.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">The length of <paramref name="values" /> is less than <see cref="Vector2.Count" />.</exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2<TScalar> Create<TScalar>(ReadOnlySpan<TScalar> elements)
+        public static Vector2<TScalar> Create<TScalar>(ReadOnlySpan<TScalar> values)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IAdditiveIdentity<TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
@@ -46,10 +63,10 @@ namespace EuclideanSpace
             IUnaryNegationOperators<TScalar, TScalar>,
             IDivisionOperators<TScalar, TScalar, TScalar>
         {
-            if (elements.Length < Count)
-                ThrowHelpers.ThrowArgumentOutOfRangeException(nameof(elements));
+            if (values.Length < Count)
+                ThrowHelpers.ThrowArgumentOutOfRangeException(nameof(values));
 
-            return new(elements[0], elements[1]);
+            return new(values[0], values[1]);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

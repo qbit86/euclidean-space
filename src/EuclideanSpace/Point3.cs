@@ -9,7 +9,10 @@ namespace EuclideanSpace
     /// </summary>
     public static partial class Point3
     {
-        internal const int Count = Vector3.Count;
+        /// <summary>
+        /// Gets the number of components that are in a <see cref="Point3{T}" />.
+        /// </summary>
+        public const int Count = Vector3.Count;
 
         /// <summary>
         /// Creates a new <see cref="Point3{T}" /> instance with all components initialized to the specified value.
@@ -27,6 +30,14 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => new(value);
 
+        /// <summary>
+        /// Creates a new <see cref="Point3{T}" /> instance with all components initialized to the specified values.
+        /// </summary>
+        /// <param name="x">The value to assign to the <see cref="Point3{T}.X" /> component.</param>
+        /// <param name="y">The value to assign to the <see cref="Point3{T}.Y" /> component.</param>
+        /// <param name="z">The value to assign to the <see cref="Point3{T}.Z" /> component.</param>
+        /// <typeparam name="TScalar">The type of the components of the point.</typeparam>
+        /// <returns>A new <see cref="Point3{T}" /> with all components initialized to the specified values.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point3<TScalar> Create<TScalar>(TScalar x, TScalar y, TScalar z)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -37,8 +48,15 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => new(x, y, z);
 
+        /// <summary>
+        /// Creates a new <see cref="Point3{T}" /> from a given readonly span.
+        /// </summary>
+        /// <param name="values">The readonly span from which the point is created.</param>
+        /// <typeparam name="TScalar">The type of the components of the point.</typeparam>
+        /// <returns>A new <see cref="Point3{T}" /> with its components set to the first <see cref="Point3.Count" /> elements from <paramref name="values" />.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">The length of <paramref name="values" /> is less than <see cref="Point3.Count" />.</exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Point3<TScalar> Create<TScalar>(ReadOnlySpan<TScalar> elements)
+        public static Point3<TScalar> Create<TScalar>(ReadOnlySpan<TScalar> values)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
             IAdditiveIdentity<TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
@@ -46,12 +64,18 @@ namespace EuclideanSpace
             IUnaryNegationOperators<TScalar, TScalar>,
             IDivisionOperators<TScalar, TScalar, TScalar>
         {
-            if (elements.Length < Count)
-                ThrowHelpers.ThrowArgumentOutOfRangeException(nameof(elements));
+            if (values.Length < Count)
+                ThrowHelpers.ThrowArgumentOutOfRangeException(nameof(values));
 
-            return new(elements[0], elements[1], elements[2]);
+            return new(values[0], values[1], values[2]);
         }
 
+        /// <summary>
+        /// Creates a new <see cref="Point3{T}" /> from a given vector.
+        /// </summary>
+        /// <param name="vector">The vector from which the point is created.</param>
+        /// <typeparam name="TScalar">The type of the components of the point.</typeparam>
+        /// <returns>A new <see cref="Point3{T}" /> with its components set to the components of the vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point3<TScalar> Create<TScalar>(Vector3<TScalar> vector)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
