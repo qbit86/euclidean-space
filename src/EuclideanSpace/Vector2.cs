@@ -69,6 +69,8 @@ namespace EuclideanSpace
             return new(values[0], values[1]);
         }
 
+        /// <summary>Gets a vector whose components are equal to zero.</summary>
+        /// <returns>A vector whose components are equal to zero.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> Zero<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -79,6 +81,8 @@ namespace EuclideanSpace
             IAdditiveIdentity<TScalar, TScalar>
             => new(TScalar.AdditiveIdentity);
 
+        /// <summary>Gets a vector whose components are equal to one.</summary>
+        /// <returns>A vector whose components are equal to one.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> One<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -90,6 +94,8 @@ namespace EuclideanSpace
             IMultiplicativeIdentity<TScalar, TScalar>
             => new(TScalar.MultiplicativeIdentity);
 
+        /// <summary>Gets the vector (1,0).</summary>
+        /// <returns>The vector <c>(1,0)</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> UnitX<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -101,6 +107,8 @@ namespace EuclideanSpace
             IMultiplicativeIdentity<TScalar, TScalar>
             => new(TScalar.MultiplicativeIdentity, TScalar.AdditiveIdentity);
 
+        /// <summary>Gets the vector (0,1).</summary>
+        /// <returns>The vector <c>(0,1)</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> UnitY<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,

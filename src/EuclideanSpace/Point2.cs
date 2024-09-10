@@ -85,6 +85,8 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => new(vector.X, vector.Y);
 
+        /// <summary>Gets a point whose components are equal to zero.</summary>
+        /// <value>A point whose components are equal to zero.</value>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TScalar> Zero<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -95,6 +97,8 @@ namespace EuclideanSpace
             IAdditiveIdentity<TScalar, TScalar>
             => new(TScalar.AdditiveIdentity);
 
+        /// <summary>Gets a point whose components are equal to one.</summary>
+        /// <value>A point whose components are equal to one.</value>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TScalar> One<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -106,6 +110,8 @@ namespace EuclideanSpace
             IMultiplicativeIdentity<TScalar, TScalar>
             => new(TScalar.MultiplicativeIdentity);
 
+        /// <summary>Gets the point (1,0).</summary>
+        /// <returns>The point <c>(1,0)</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TScalar> UnitX<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -117,6 +123,8 @@ namespace EuclideanSpace
             IMultiplicativeIdentity<TScalar, TScalar>
             => new(TScalar.MultiplicativeIdentity, TScalar.AdditiveIdentity);
 
+        /// <summary>Gets the point (0,1,0).</summary>
+        /// <returns>The point <c>(0,1,0)</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TScalar> UnitY<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,

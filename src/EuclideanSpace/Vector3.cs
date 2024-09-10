@@ -70,6 +70,8 @@ namespace EuclideanSpace
             return new(values[0], values[1], values[2]);
         }
 
+        /// <summary>Gets a vector whose components are equal to zero.</summary>
+        /// <value>A vector whose components are equal to zero.</value>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> Zero<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -80,6 +82,8 @@ namespace EuclideanSpace
             IAdditiveIdentity<TScalar, TScalar>
             => new(TScalar.AdditiveIdentity);
 
+        /// <summary>Gets a vector whose components are equal to one.</summary>
+        /// <value>A vector whose components are equal to one.</value>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> One<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -91,6 +95,8 @@ namespace EuclideanSpace
             IMultiplicativeIdentity<TScalar, TScalar>
             => new(TScalar.MultiplicativeIdentity);
 
+        /// <summary>Gets the vector (1,0,0).</summary>
+        /// <returns>The vector <c>(1,0,0)</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> UnitX<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -102,6 +108,8 @@ namespace EuclideanSpace
             IMultiplicativeIdentity<TScalar, TScalar>
             => new(TScalar.MultiplicativeIdentity, TScalar.AdditiveIdentity, TScalar.AdditiveIdentity);
 
+        /// <summary>Gets the vector (0,1,0).</summary>
+        /// <returns>The vector <c>(0,1,0)</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> UnitY<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -113,6 +121,8 @@ namespace EuclideanSpace
             IMultiplicativeIdentity<TScalar, TScalar>
             => new(TScalar.AdditiveIdentity, TScalar.MultiplicativeIdentity, TScalar.AdditiveIdentity);
 
+        /// <summary>Gets the vector (0,0,1).</summary>
+        /// <returns>The vector <c>(0,0,1)</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> UnitZ<TScalar>()
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
