@@ -71,6 +71,7 @@ namespace EuclideanSpace
         }
 
         /// <summary>Gets a vector whose components are equal to zero.</summary>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
         /// <value>A vector whose components are equal to zero.</value>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> Zero<TScalar>()
@@ -83,6 +84,7 @@ namespace EuclideanSpace
             => new(TScalar.AdditiveIdentity);
 
         /// <summary>Gets a vector whose components are equal to one.</summary>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
         /// <value>A vector whose components are equal to one.</value>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> One<TScalar>()
@@ -96,6 +98,7 @@ namespace EuclideanSpace
             => new(TScalar.MultiplicativeIdentity);
 
         /// <summary>Gets the vector (1,0,0).</summary>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
         /// <returns>The vector <c>(1,0,0)</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> UnitX<TScalar>()
@@ -109,6 +112,7 @@ namespace EuclideanSpace
             => new(TScalar.MultiplicativeIdentity, TScalar.AdditiveIdentity, TScalar.AdditiveIdentity);
 
         /// <summary>Gets the vector (0,1,0).</summary>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
         /// <returns>The vector <c>(0,1,0)</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> UnitY<TScalar>()
@@ -122,6 +126,7 @@ namespace EuclideanSpace
             => new(TScalar.AdditiveIdentity, TScalar.MultiplicativeIdentity, TScalar.AdditiveIdentity);
 
         /// <summary>Gets the vector (0,0,1).</summary>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
         /// <returns>The vector <c>(0,0,1)</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> UnitZ<TScalar>()
@@ -134,6 +139,11 @@ namespace EuclideanSpace
             IMultiplicativeIdentity<TScalar, TScalar>
             => new(TScalar.AdditiveIdentity, TScalar.AdditiveIdentity, TScalar.MultiplicativeIdentity);
 
+        /// <summary>Adds two vectors to compute their sum.</summary>
+        /// <param name="left">The vector to add with <paramref name="right" />.</param>
+        /// <param name="right">The vector to add with <paramref name="left" />.</param>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>The sum of <paramref name="left" /> and <paramref name="right" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> Add<TScalar>(Vector3<TScalar> left, Vector3<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,

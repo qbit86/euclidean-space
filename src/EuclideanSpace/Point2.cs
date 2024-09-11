@@ -86,6 +86,7 @@ namespace EuclideanSpace
             => new(vector.X, vector.Y);
 
         /// <summary>Gets a point whose components are equal to zero.</summary>
+        /// <typeparam name="TScalar">The type of the components of the point.</typeparam>
         /// <value>A point whose components are equal to zero.</value>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TScalar> Zero<TScalar>()
@@ -98,6 +99,7 @@ namespace EuclideanSpace
             => new(TScalar.AdditiveIdentity);
 
         /// <summary>Gets a point whose components are equal to one.</summary>
+        /// <typeparam name="TScalar">The type of the components of the point.</typeparam>
         /// <value>A point whose components are equal to one.</value>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TScalar> One<TScalar>()
@@ -111,6 +113,7 @@ namespace EuclideanSpace
             => new(TScalar.MultiplicativeIdentity);
 
         /// <summary>Gets the point (1,0).</summary>
+        /// <typeparam name="TScalar">The type of the components of the point.</typeparam>
         /// <returns>The point <c>(1,0)</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TScalar> UnitX<TScalar>()
@@ -124,6 +127,7 @@ namespace EuclideanSpace
             => new(TScalar.MultiplicativeIdentity, TScalar.AdditiveIdentity);
 
         /// <summary>Gets the point (0,1,0).</summary>
+        /// <typeparam name="TScalar">The type of the components of the point.</typeparam>
         /// <returns>The point <c>(0,1,0)</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TScalar> UnitY<TScalar>()
@@ -136,6 +140,11 @@ namespace EuclideanSpace
             IMultiplicativeIdentity<TScalar, TScalar>
             => new(TScalar.AdditiveIdentity, TScalar.MultiplicativeIdentity);
 
+        /// <summary>Translates a point by a given vector.</summary>
+        /// <param name="left">The point to translate.</param>
+        /// <param name="right">The vector to add to the point.</param>
+        /// <typeparam name="TScalar">The type of the components of the point and the vector.</typeparam>
+        /// <returns>The translated point.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TScalar> Add<TScalar>(Point2<TScalar> left, Vector2<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
