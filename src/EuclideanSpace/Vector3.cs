@@ -154,6 +154,11 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => left + right;
 
+        /// <summary>Multiplies two vectors to compute their component-wise product.</summary>
+        /// <param name="left">The vector to multiply with <paramref name="right" />.</param>
+        /// <param name="right">The vector to multiply with <paramref name="left" />.</param>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>The component-wise product of <paramref name="left" /> and <paramref name="right" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> Multiply<TScalar>(Vector3<TScalar> left, Vector3<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -164,6 +169,11 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => left * right;
 
+        /// <summary>Multiplies a vector by a scalar to compute their product.</summary>
+        /// <param name="left">The vector to multiply with <paramref name="right" />.</param>
+        /// <param name="right">The scalar to multiply with <paramref name="left" />.</param>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>The product of <paramref name="left" /> and <paramref name="right" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> Multiply<TScalar>(Vector3<TScalar> left, TScalar right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -174,6 +184,11 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => left * right;
 
+        /// <summary>Multiplies a vector by a scalar to compute their product.</summary>
+        /// <param name="left">The scalar to multiply with <paramref name="right" />.</param>
+        /// <param name="right">The vector to multiply with <paramref name="left" />.</param>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>The product of <paramref name="left" /> and <paramref name="right" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> Multiply<TScalar>(TScalar left, Vector3<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
