@@ -199,6 +199,11 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => left * right;
 
+        /// <summary>Subtracts two vectors to compute their difference.</summary>
+        /// <param name="left">The vector from which <paramref name="right" /> will be subtracted.</param>
+        /// <param name="right">The vector to subtract from <paramref name="left" />.</param>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>The difference of <paramref name="left" /> and <paramref name="right" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> Subtract<TScalar>(Vector3<TScalar> left, Vector3<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -209,6 +214,10 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => left - right;
 
+        /// <summary>Computes the unary negation of a vector.</summary>
+        /// <param name="value">The vector to negate.</param>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>A vector whose components are the unary negation of the corresponding components in <paramref name="value" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> Negate<TScalar>(Vector3<TScalar> value)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,

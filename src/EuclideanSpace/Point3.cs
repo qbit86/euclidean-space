@@ -170,6 +170,11 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => left + right;
 
+        /// <summary>Subtracts two points to compute their difference.</summary>
+        /// <param name="left">The point from which <paramref name="right" /> will be subtracted.</param>
+        /// <param name="right">The point to subtract from <paramref name="left" />.</param>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>The vector that is the result of the subtraction operation.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> Subtract<TScalar>(Point3<TScalar> left, Point3<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -180,6 +185,11 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => left - right;
 
+        /// <summary>Subtracts specified vector from the specified point.</summary>
+        /// <param name="left">The point to be subtracted from.</param>
+        /// <param name="right">The vector to subtract from the point.</param>
+        /// <typeparam name="TScalar">The type of the components of the point and the vector.</typeparam>
+        /// <returns>The point that is the result of the subtraction operation.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point3<TScalar> Subtract<TScalar>(Point3<TScalar> left, Vector3<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
