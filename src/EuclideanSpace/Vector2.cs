@@ -213,6 +213,11 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => -value;
 
+        /// <summary>Divides two vectors to compute their quotient.</summary>
+        /// <param name="left">The vector that will be divided by <paramref name="right" />.</param>
+        /// <param name="right">The vector that will divide <paramref name="left" />.</param>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>The quotient of <paramref name="left" /> divided by <paramref name="right" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> Divide<TScalar>(Vector2<TScalar> left, Vector2<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -223,6 +228,11 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => left / right;
 
+        /// <summary>Divides a vector by a scalar to compute the per-component quotient.</summary>
+        /// <param name="left">The vector that will be divided by <paramref name="right" />.</param>
+        /// <param name="right">The scalar that will divide <paramref name="left" />.</param>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>The quotient of <paramref name="left" /> divided by <paramref name="right" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> Divide<TScalar>(Vector2<TScalar> left, TScalar right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -233,6 +243,11 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => left / right;
 
+        /// <summary>Computes the dot product of two vectors.</summary>
+        /// <param name="left">The vector that will be dotted with <paramref name="right" />.</param>
+        /// <param name="right">The vector that will be dotted with <paramref name="left" />.</param>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>The dot product of <paramref name="left" /> and <paramref name="right" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TScalar Dot<TScalar>(Vector2<TScalar> left, Vector2<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -243,6 +258,10 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => left.X * right.X + left.Y * right.Y;
 
+        /// <summary>Computes the pseudo-scalar product of two vectors.</summary>
+        /// <param name="left">The first vector.</param>
+        /// <param name="right">The second vector.</param>
+        /// <returns>The pseudo-scalar product.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TScalar Cross<TScalar>(Vector2<TScalar> left, Vector2<TScalar> right)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
