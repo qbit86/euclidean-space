@@ -6,6 +6,10 @@ namespace EuclideanSpace
 
     public static partial class Point3
     {
+        /// <summary>Reinterprets a <see cref="Point3{T}" /> as a new <see cref="Vector3{T}" />.</summary>
+        /// <param name="point">The point to reinterpret.</param>
+        /// <typeparam name="TScalar">The type of the components of the point and the vector.</typeparam>
+        /// <returns><paramref name="point" /> reinterpreted as a new <see cref="Vector3{T}" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> AsVector3<TScalar>(this Point3<TScalar> point)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
