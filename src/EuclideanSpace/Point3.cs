@@ -173,7 +173,7 @@ namespace EuclideanSpace
         /// <summary>Subtracts two points to compute their difference.</summary>
         /// <param name="left">The point from which <paramref name="right" /> will be subtracted.</param>
         /// <param name="right">The point to subtract from <paramref name="left" />.</param>
-        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <typeparam name="TScalar">The type of the components of the points.</typeparam>
         /// <returns>The vector that is the result of the subtraction operation.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> Subtract<TScalar>(Point3<TScalar> left, Point3<TScalar> right)
@@ -200,6 +200,11 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => left - right;
 
+        /// <summary>Returns the Euclidean distance squared between two specified points.</summary>
+        /// <param name="value1">The first point.</param>
+        /// <param name="value2">The second point.</param>
+        /// <typeparam name="TScalar">The type of the components of the points.</typeparam>
+        /// <returns>The distance squared.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TScalar DistanceSquared<TScalar>(Point3<TScalar> value1, Point3<TScalar> value2)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -210,6 +215,11 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => (value1 - value2).LengthSquared();
 
+        /// <summary>Computes the Euclidean distance between the two given points.</summary>
+        /// <param name="value1">The first point.</param>
+        /// <param name="value2">The second point.</param>
+        /// <typeparam name="TScalar">The type of the components of the points.</typeparam>
+        /// <returns>The distance.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TScalar Distance<TScalar>(Point3<TScalar> value1, Point3<TScalar> value2)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,

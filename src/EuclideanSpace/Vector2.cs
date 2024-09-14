@@ -127,7 +127,7 @@ namespace EuclideanSpace
         /// <summary>Adds two vectors to compute their sum.</summary>
         /// <param name="left">The vector to add with <paramref name="right" />.</param>
         /// <param name="right">The vector to add with <paramref name="left" />.</param>
-        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <typeparam name="TScalar">The type of the components of the vectors.</typeparam>
         /// <returns>The sum of <paramref name="left" /> and <paramref name="right" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> Add<TScalar>(Vector2<TScalar> left, Vector2<TScalar> right)
@@ -142,7 +142,7 @@ namespace EuclideanSpace
         /// <summary>Multiplies two vectors to compute their component-wise product.</summary>
         /// <param name="left">The vector to multiply with <paramref name="right" />.</param>
         /// <param name="right">The vector to multiply with <paramref name="left" />.</param>
-        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <typeparam name="TScalar">The type of the components of the vectors.</typeparam>
         /// <returns>The component-wise product of <paramref name="left" /> and <paramref name="right" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> Multiply<TScalar>(Vector2<TScalar> left, Vector2<TScalar> right)
@@ -187,7 +187,7 @@ namespace EuclideanSpace
         /// <summary>Subtracts two vectors to compute their difference.</summary>
         /// <param name="left">The vector from which <paramref name="right" /> will be subtracted.</param>
         /// <param name="right">The vector to subtract from <paramref name="left" />.</param>
-        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <typeparam name="TScalar">The type of the components of the vectors.</typeparam>
         /// <returns>The difference of <paramref name="left" /> and <paramref name="right" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> Subtract<TScalar>(Vector2<TScalar> left, Vector2<TScalar> right)
@@ -216,7 +216,7 @@ namespace EuclideanSpace
         /// <summary>Divides two vectors to compute their quotient.</summary>
         /// <param name="left">The vector that will be divided by <paramref name="right" />.</param>
         /// <param name="right">The vector that will divide <paramref name="left" />.</param>
-        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <typeparam name="TScalar">The type of the components of the vectors.</typeparam>
         /// <returns>The quotient of <paramref name="left" /> divided by <paramref name="right" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TScalar> Divide<TScalar>(Vector2<TScalar> left, Vector2<TScalar> right)
@@ -246,7 +246,7 @@ namespace EuclideanSpace
         /// <summary>Computes the dot product of two vectors.</summary>
         /// <param name="left">The vector that will be dotted with <paramref name="right" />.</param>
         /// <param name="right">The vector that will be dotted with <paramref name="left" />.</param>
-        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <typeparam name="TScalar">The type of the components of the vectors.</typeparam>
         /// <returns>The dot product of <paramref name="left" /> and <paramref name="right" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TScalar Dot<TScalar>(Vector2<TScalar> left, Vector2<TScalar> right)
@@ -261,6 +261,7 @@ namespace EuclideanSpace
         /// <summary>Computes the pseudo-scalar product of two vectors.</summary>
         /// <param name="left">The first vector.</param>
         /// <param name="right">The second vector.</param>
+        /// <typeparam name="TScalar">The type of the components of the vectors.</typeparam>
         /// <returns>The pseudo-scalar product.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TScalar Cross<TScalar>(Vector2<TScalar> left, Vector2<TScalar> right)
@@ -272,6 +273,11 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => left.X * right.Y - left.Y * right.X;
 
+        /// <summary>Returns the Euclidean distance squared between the endpoints of two specified vectors.</summary>
+        /// <param name="value1">The first vector.</param>
+        /// <param name="value2">The second vector.</param>
+        /// <typeparam name="TScalar">The type of the components of the vectors.</typeparam>
+        /// <returns>The distance squared.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TScalar DistanceSquared<TScalar>(Vector2<TScalar> value1, Vector2<TScalar> value2)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -282,6 +288,11 @@ namespace EuclideanSpace
             IDivisionOperators<TScalar, TScalar, TScalar>
             => (value1 - value2).LengthSquared();
 
+        /// <summary>Computes the Euclidean distance between the endpoints of two given vectors.</summary>
+        /// <param name="value1">The first vector.</param>
+        /// <param name="value2">The second vector.</param>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>The distance.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TScalar Distance<TScalar>(Vector2<TScalar> value1, Vector2<TScalar> value2)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
