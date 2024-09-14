@@ -215,6 +215,14 @@ namespace EuclideanSpace
             IRootFunctions<TScalar>
             => (value1 - value2).Length();
 
+        /// <summary>
+        /// Performs a linear interpolation between two points based on the given weight.
+        /// </summary>
+        /// <param name="value1">The first point, which is intended to be the lower bound.</param>
+        /// <param name="value2">The second point, which is intended to be the upper bound.</param>
+        /// <param name="amount">A value, intended to be between 0 and 1, that indicates the weight of the interpolation.</param>
+        /// <typeparam name="TScalar">The type of the components of the points.</typeparam>
+        /// <returns>The interpolated point.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TScalar> Lerp<TScalar>(Point2<TScalar> value1, Point2<TScalar> value2, TScalar amount)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
