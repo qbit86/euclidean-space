@@ -3,6 +3,10 @@ namespace EuclideanSpace
     using System.Numerics;
     using System.Runtime.CompilerServices;
 
+    /// <summary>
+    /// Provides a collection of static methods for operating on generic points that perform type conversions.
+    /// </summary>
+    /// <typeparam name="TTarget">The type of the components in the output point.</typeparam>
     public static class Point3Conversions<TTarget>
         where TTarget : INumberBase<TTarget>
     {

@@ -3,6 +3,9 @@ namespace EuclideanSpace
     using System.Numerics;
     using System.Runtime.CompilerServices;
 
+    /// <summary>
+    /// Provides a collection of static methods for operating on generic vectors that perform type conversions.
+    /// </summary>
     public static class Vector2Conversions
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
