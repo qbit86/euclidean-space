@@ -1,5 +1,16 @@
 # Changelog
 
+## [Unreleased] - 2024-09-18
+
+### Added
+
+- Implemented `IAdditiveIdentity<Vector…<TScalar>, Vector…<TScalar>>` by `Vector…<TScalar>`.
+- XML-doc comments for public types
+
+### Removed
+
+- Removed multiply, divide and negate operators on `Point…<TScalar>` — there are no such operations in an affine space.
+
 ## [0.1.2-preview] - 2024-08-12
 
 ### Changed
