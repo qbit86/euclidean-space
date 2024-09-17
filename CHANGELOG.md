@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased] - 2024-09-18
+## [0.1.3] - 2024-09-18
 
 ### Added
 
@@ -35,7 +35,9 @@
 - `Point2<TScalar>`, `Point2`
 - `Point2Conversions<TTarget>`, `Point2Conversions`
 
-[Unreleased]: https://github.com/qbit86/euclidean-space/compare/euclidean-space-0.1.2-preview...HEAD
+[Unreleased]: https://github.com/qbit86/euclidean-space/compare/euclidean-space-0.1.3...HEAD
+
+[0.1.3]: https://github.com/qbit86/euclidean-space/compare/euclidean-space-0.1.2-preview...euclidean-space-0.1.3
 
 [0.1.2-preview]: https://github.com/qbit86/euclidean-space/compare/euclidean-space-0.1.1-preview...euclidean-space-0.1.2-preview
 
