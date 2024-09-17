@@ -6,6 +6,9 @@ namespace EuclideanSpace
 
     public static partial class Vector3
     {
+        /// <summary>Returns the length of a vector.</summary>
+        /// <typeparam name="TScalar">The type of the components of the vector.</typeparam>
+        /// <returns>The vector's length.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TScalar Length<TScalar>(this Vector3<TScalar> value)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -19,6 +22,9 @@ namespace EuclideanSpace
             return TScalar.Sqrt(lengthSquared);
         }
 
+        /// <summary>Returns a vector with the same direction as the specified vector, but with a length of one.</summary>
+        /// <param name="value">The vector to normalize.</param>
+        /// <returns>The normalized vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3<TScalar> Normalize<TScalar>(this Vector3<TScalar> value)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
@@ -32,6 +38,7 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static TScalar GetElementUnsafe<TScalar>(in this Vector3<TScalar> vector, int index)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
             IUnaryNegationOperators<TScalar, TScalar>,
@@ -45,6 +52,7 @@ namespace EuclideanSpace
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static TScalar GetElement<TScalar>(this Vector3<TScalar> vector, int index)
             where TScalar : IAdditionOperators<TScalar, TScalar, TScalar>,
+            IAdditiveIdentity<TScalar, TScalar>,
             IMultiplyOperators<TScalar, TScalar, TScalar>,
             ISubtractionOperators<TScalar, TScalar, TScalar>,
             IUnaryNegationOperators<TScalar, TScalar>,
