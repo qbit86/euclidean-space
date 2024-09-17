@@ -35,16 +35,34 @@ namespace EuclideanSpace
             where TY : INumberBase<TY>
             => new(TTarget.CreateChecked(x), TTarget.CreateChecked(y));
 
+        /// <summary>
+        /// Creates a new <see langword="Point2&lt;TTarget&gt;" /> instance with all components initialized to the components of the specified <paramref name="point" /> converted to <typeparamref name="TTarget" />.
+        /// </summary>
+        /// <param name="point">The point whose components to convert to <typeparamref name="TTarget" />.</param>
+        /// <typeparam name="TScalar">The type of the components of the input point.</typeparam>
+        /// <returns>A new <see langword="Point2&lt;TTarget&gt;" /> with all components initialized to the components of <paramref name="point" /> converted to <typeparamref name="TTarget" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TTarget> AsPoint2<TScalar>(Point2<TScalar> point)
             where TScalar : INumberBase<TScalar>
             => new(TTarget.CreateChecked(point.X), TTarget.CreateChecked(point.Y));
 
+        /// <summary>
+        /// Creates a new <see langword="Point2&lt;TTarget&gt;" /> instance with all components initialized to the components of the specified <paramref name="vector" /> converted to <typeparamref name="TTarget" />.
+        /// </summary>
+        /// <param name="vector">The vector whose components to convert to <typeparamref name="TTarget" />.</param>
+        /// <typeparam name="TScalar">The type of the components of the input vector.</typeparam>
+        /// <returns>A new <see langword="Point2&lt;TTarget&gt;" /> with all components initialized to the components of <paramref name="vector" /> converted to <typeparamref name="TTarget" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Point2<TTarget> AsPoint2<TScalar>(Vector2<TScalar> vector)
             where TScalar : INumberBase<TScalar>
             => new(TTarget.CreateChecked(vector.X), TTarget.CreateChecked(vector.Y));
 
+        /// <summary>
+        /// Creates a new <see langword="Vector2&lt;TTarget&gt;" /> instance with all components initialized to the components of the specified <paramref name="point" /> converted to <typeparamref name="TTarget" />.
+        /// </summary>
+        /// <param name="point">The point whose components to convert to <typeparamref name="TTarget" />.</param>
+        /// <typeparam name="TScalar">The type of the components of the input point.</typeparam>
+        /// <returns>A new <see langword="Vector2&lt;TTarget&gt;" /> with all components initialized to the components of <paramref name="point" /> converted to <typeparamref name="TTarget" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2<TTarget> AsVector2<TScalar>(Point2<TScalar> point)
             where TScalar : INumberBase<TScalar>
